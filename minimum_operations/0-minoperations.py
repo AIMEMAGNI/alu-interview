@@ -1,5 +1,11 @@
 #!/usr/bin/python3
-"""Module"""
+
+"""
+This script provides a function to calculate the fewest number of operations
+needed to result in exactly n H characters in a text file using the "Copy All"
+and "Paste" operations.
+"""
+
 def minOperations(n):
     """
     Calculate the fewest number of operations needed to result in exactly n H characters in a text file.
