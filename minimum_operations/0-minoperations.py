@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Module"""
 def minOperations(n):
     """
     Calculate the fewest number of operations needed to result in exactly n H characters in a text file.
