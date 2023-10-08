@@ -1,28 +1,35 @@
 #!/usr/bin/python3
+"""
+0-rain
+"""
+
 
 def rain(walls):
-    if not walls:
+    """
+    Calculate how many square units of water will be retained between walls.
+
+    :param walls: A list of non-negative integers representing wall heights.
+    :type walls: List[int]
+    :return: Integer indicating the total amount of rainwater retained.
+    :rtype: int
+    """
+    if not walls or len(walls) < 3:
         return 0
 
     n = len(walls)
     left_max = [0] * n
     right_max = [0] * n
+    water_trapped = 0
 
     left_max[0] = walls[0]
     for i in range(1, n):
-        left_max[i] = max(left_max[i-1], walls[i])
+        left_max[i] = max(left_max[i - 1], walls[i])
 
-    right_max[n-1] = walls[n-1]
-    for i in range(n-2, -1, -1):
-        right_max[i] = max(right_max[i+1], walls[i])
+    right_max[n - 1] = walls[n - 1]
+    for i in range(n - 2, -1, -1):
+        right_max[i] = max(right_max[i + 1], walls[i])
 
-    total_water = 0
     for i in range(n):
-        total_water += min(left_max[i], right_max[i]) - walls[i]
+        water_trapped += min(left_max[i], right_max[i]) - walls[i]
 
-    return total_water
-
-# Example usage
-walls = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]
-result = rain(walls)
-print(result)  # Output: 6
+    return water_trapped
